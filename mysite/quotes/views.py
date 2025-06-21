@@ -2,4 +2,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def start_page(request):
-    return HttpResponse('Hello world')
+    return render(request, 'quotes/start_page.html')
