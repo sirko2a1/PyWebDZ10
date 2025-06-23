@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .forms import SignUpForm, LoginForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
+
 
 def start_page(request):
     return render(request, 'start_page.html')
@@ -30,6 +32,13 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
-def logout_view(request):
-    logout(request)
-    return redirect('start')
+def confirm_logout_view(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        user = authenticate(username=request.user.username, password=password)
+        if user:
+            logout(request)
+            return redirect('start')
+        else:
+            messages.error(request, "Wrong password. Try again.")
+    return render(request, 'confirm.html')

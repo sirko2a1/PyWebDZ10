@@ -1,0 +1,15 @@
+<h2>Confirm Logout</h2>
+<p>Please enter your password to log out, {{ user.username }}.</p>
+<form method="POST">
+    {% csrf_token %}
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Confirm Logout</button>
+</form>
+<a href="{% url 'start' %}">Cancel</a>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
