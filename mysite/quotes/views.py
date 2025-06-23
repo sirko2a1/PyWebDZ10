@@ -41,4 +41,4 @@ def confirm_logout_view(request):
             return redirect('start')
         else:
             messages.error(request, "Wrong password. Try again.")
-    return render(request, 'confirm.html')
+    return render(request, 'logout.html')
