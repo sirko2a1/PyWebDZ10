@@ -4,10 +4,12 @@ from .forms import SignUpForm, LoginForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from .models import Quote
 
 
 def start_page(request):
-    return render(request, 'start_page.html')
+    quotes = Quote.objects.prefetch_related('tags').all()
+    return render(request, 'start_page.html', {'quotes': quotes})
 
 def signup_view(request):
     if request.method == 'POST':

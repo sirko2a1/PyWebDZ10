@@ -92,53 +92,17 @@
 </div>
         </div>
 
-        <div class="quote">
-            <span class="text">“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”</span>
-            <span>by <span class="author">Albert Einstein</span> (<a href="#">about</a>)</span>
-            <div class="tags">
-                Tags:
-                <a class="tag" href="#">change</a>
-                <a class="tag" href="#">deep-thoughts</a>
-                <a class="tag" href="#">thinking</a>
-                <a class="tag" href="#">world</a>
-            </div>
-        </div>
-
-        <div class="quote">
-            <span class="text">“It is our choices, Harry, that show what we truly are, far more than our abilities.”</span>
-            <span>by <span class="author">J.K. Rowling</span> (<a href="#">about</a>)</span>
-            <div class="tags">
-                Tags:
-                <a class="tag" href="#">abilities</a>
-                <a class="tag" href="#">choices</a>
-            </div>
-        </div>
-
-        <div class="quote">
-            <span class="text">“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”</span>
-            <span>by <span class="author">Albert Einstein</span> (<a href="#">about</a>)</span>
-            <div class="tags">
-                Tags:
-                <a class="tag" href="#">inspirational</a>
-                <a class="tag" href="#">life</a>
-                <a class="tag" href="#">miracle</a>
-                <a class="tag" href="#">miracles</a>
-            </div>
-        </div>
+        {% for quote in quotes %}
+<div class="quote">
+    <span class="text">{{ quote.text }}</span>
+    <span>by <span class="author">{{ quote.author }}</span></span>
+    <div class="tags">
+        Tags:
+        {% for tag in quote.tags.all %}
+            <a class="tag" href="#">{{ tag.name }}</a>
+        {% endfor %}
     </div>
-
-    <!--<div class="sidebar">
-        <h2>Top Ten tags</h2>
-        <a class="tag" href="#">love</a>
-        <a class="tag" href="#">inspirational</a>
-        <a class="tag" href="#">life</a>
-        <a class="tag" href="#">humor</a>
-        <a class="tag" href="#">books</a>
-        <a class="tag" href="#">reading</a>
-        <a class="tag" href="#">friendship</a>
-        <a class="tag" href="#">friends</a>
-        <a class="tag" href="#">truth</a>
-        <a class="tag" href="#">simile</a>
-    </div>-->
+</div>
+{% endfor %}
 </body>
 </html>
