@@ -71,16 +71,13 @@
     <form method="post">
         {% csrf_token %}
         <div class="form-container">
-            <!-- Left side: password + log in -->
             <div class="form-section">
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" class="login-btn">log in</button>
             </div>
 
-            <!-- OR -->
             <div class="or-text">OR</div>
 
-            <!-- Right side: username + sign up -->
             <div class="form-section">
                 <input type="text" name="username" placeholder="Username" required>
                 <a href="{% url 'signup' %}">

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #fef7ff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        textarea, input[type=text] {
+            padding: 10px;
+            border-radius: 30px;
+            border: 2px solid black;
+            width: 300px;
+        }
+        textarea {
+            height: 100px;
+        }
+        button {
+            border: none;
+            border-radius: 30px;
+            background-color: #3f8efc;
+            color: white;
+            padding: 10px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.text }}
+        {{ form.author }}
+        {{ form.tags }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

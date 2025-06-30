@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Quote
+from .forms import QuoteForm
+from django.contrib.auth.decorators import login_required
 
 
 def start_page(request):
@@ -44,3 +46,14 @@ def confirm_logout_view(request):
         else:
             messages.error(request, "Wrong password. Try again.")
     return render(request, 'logout.html')
+
+@login_required
+def add_quote(request):
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            quote = form.save()
+            return redirect('start_page')
+    else:
+        form = QuoteForm()
+    return render(request, 'quotes/add_quote.html', {'form': form})
